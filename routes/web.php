@@ -1,0 +1,18 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\ChildrenController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
+Route::get('/console/login', [ConsoleController::class,'loginForm'])->middleware('guest')->name('login');
+Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
+Route::get('/console/logout',[ConsoleController::class, 'logout'])->middleware('auth');
+
+Route::get('/console/children/list', [ChildrenController::class, 'list'])->middleware('auth');
+Route::get('/console/children/delete/{child:id}', [ChildrenController::class, 'delete'])->where('child', '[0-9]+')->middleware('auth');
