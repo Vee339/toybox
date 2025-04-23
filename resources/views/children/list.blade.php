@@ -29,7 +29,7 @@
     
     <?php if(session()->has('message')): ?>
         <div class="message" >
-            <p>The child has been deleted successfully.</p>
+            <p><?= session()->get('message') ?></p>
         </div>
     <?php endif; ?>
 
@@ -59,9 +59,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-        <a href="/console/children/add">Add new</a>
-
+        <a class="btn" href="/console/children/add">Add new</a>
     </main>
 </body>
 </html>
