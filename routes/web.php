@@ -24,3 +24,7 @@ Route::post('/console/children/edit/{child:id}',[ChildrenController::class, 'edi
 
 Route::get('/console/toys/list', [ToysController::class, 'list'])->middleware('auth');
 Route::get('/console/toys/delete/{toy:id}', [ToysController::class, 'delete'])->where('toy', '[0-9]+')->middleware('auth');
+Route::get('/console/toys/add', [ToysController::class, 'addForm'])->middleware('auth');
+Route::post('/console/toys/add', [ToysController::class, 'add'])->middleware('auth');
+Route::get('/console/toys/edit/{toy:id}', [ToysController::class, 'editForm'])->where('toy', '[0-9]+')->middleware('auth');
+Route::post('/console/toys/edit/{toy:id}', [ToysController::class, 'edit'])->where('toy', '[0-9]+')->middleware('auth');

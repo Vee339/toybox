@@ -21,4 +21,66 @@ class ToysController extends Controller
             ->with('message', 'Toy has been deleted');
 
     }
+
+    public function addForm(){
+        return view('toys.add');
+    }
+
+    public function add(){
+        $attributes = request()->validate([
+            'name' => 'required',
+            'child_id' => 'required',
+            'image' => 'nullable',
+            'condition' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'material' => 'required'
+        ]);
+
+        $toy = new Toy();
+        $toy->name = $attributes['name'];
+        $toy->child_id = $attributes['child_id'];
+        $toy->image = $attributes['image'];
+        $toy->condition = $attributes['condition'];
+        $toy->price = $attributes['price'];
+        $toy->description = $attributes['description'];
+        $toy->material = $attributes['material'];
+
+        $toy->save();
+
+        return redirect('/console/toys/list')
+            ->with('message', 'Toy has been added successfully');
+    }
+
+    public function editForm(Toy $toy){
+        return view('toys.edit',[
+            'toy' => $toy
+        ]);
+    }
+
+    public function edit(Toy $toy){
+        $attributes = request()->validate([
+            'name' => 'required',
+            'child_id' => 'required',
+            'image' => 'nullable',
+            'condition' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'material' => 'required'
+        ]);
+
+        $toy->name = $attributes['name'];
+        $toy->child_id = $attributes['child_id'];
+        $toy->image = $attributes['image'];
+        $toy->condition = $attributes['condition'];
+        $toy->price = $attributes['price'];
+        $toy->description = $attributes['description'];
+        $toy->material = $attributes['material'];
+
+        $toy->save();
+
+        return redirect('/console/toys/list')
+            ->with('message', 'Toy has been updated successfully');
+    }
+
 }

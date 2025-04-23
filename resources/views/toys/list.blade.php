@@ -65,7 +65,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a class="btn" href="/console/children/add">Add new</a>
+        <a class="btn" href="/console/toys/add">Add new</a>
     </main>
 </body>
 </html>
