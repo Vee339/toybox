@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ChildrenController;
+use App\Http\Controllers\ToysController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,3 +21,6 @@ Route::get('/console/children/add', [ChildrenController::class, 'addForm'])->mid
 Route::post('/console/children/add', [ChildrenController::class, 'add'])->middleware('auth');
 Route::get('/console/children/edit/{child:id}', [ChildrenController::class, 'editForm'])->where('child', '[0-9]+')->middleware('auth');
 Route::post('/console/children/edit/{child:id}',[ChildrenController::class, 'edit'])->where('child', '[0-9]+')->middleware('auth');
+
+Route::get('/console/toys/list', [ToysController::class, 'list'])->middleware('auth');
+Route::get('/console/toys/delete/{toy:id}', [ToysController::class, 'delete'])->where('toy', '[0-9]+')->middleware('auth');
