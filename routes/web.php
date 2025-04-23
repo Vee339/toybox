@@ -18,3 +18,5 @@ Route::get('/console/children/list', [ChildrenController::class, 'list'])->middl
 Route::get('/console/children/delete/{child:id}', [ChildrenController::class, 'delete'])->where('child', '[0-9]+')->middleware('auth');
 Route::get('/console/children/add', [ChildrenController::class, 'addForm'])->middleware('auth');
 Route::post('/console/children/add', [ChildrenController::class, 'add'])->middleware('auth');
+Route::get('/console/children/edit/{child:id}', [ChildrenController::class, 'editForm'])->where('child', '[0-9]+')->middleware('auth');
+Route::post('/console/children/edit/{child:id}',[ChildrenController::class, 'edit'])->where('child', '[0-9]+')->middleware('auth');

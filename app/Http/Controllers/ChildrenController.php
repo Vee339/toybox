@@ -46,4 +46,29 @@ class ChildrenController extends Controller
         return redirect('/console/children/list')
             ->with('message', 'Child has been added successfully');
     }
+
+    public function editForm(Child $child){
+        return view('children.edit',[
+            'child' => $child
+        ]);
+    }
+
+    public function edit(Child $child){
+        $attributes = request()->validate([
+            'name' => 'required',
+            'image' => 'nullable',
+            'gender' => 'required',
+            'date_of_birth' => 'required',
+        ]);
+
+        $child->name = $attributes['name'];
+        $child->image = $attributes['image'];
+        $child->gender = $attributes['gender'];
+        $child->date_of_birth = $attributes['date_of_birth'];
+
+        $child->save();
+
+        return redirect('/console/children/list')
+            ->with('message', 'Child has been updated successfully');
+    }
 }

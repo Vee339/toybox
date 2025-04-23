@@ -91,7 +91,7 @@ td {
     top: -100%;
     left: 50%;
     transform: translateX(-50%);
-    animation: messagePop 10s forwards;
+    animation: messagePop 5s forwards;
 }
 .btn {
     padding: 0.5rem 2rem;
@@ -109,7 +109,7 @@ td {
         display: none;
         top: -100%;
     }
-    10% {
+    20% {
         opacity: 1;
         display: block;
         top: 0;
