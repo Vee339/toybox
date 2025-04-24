@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ChildrenController;
 use App\Http\Controllers\ToysController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 Route::get('/console/login', [ConsoleController::class,'loginForm'])->middleware('guest')->name('login');
